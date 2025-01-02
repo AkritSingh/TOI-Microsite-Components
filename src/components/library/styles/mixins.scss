@@ -1,0 +1,73 @@
+
+$mobile: 450;
+$tablet: 768;
+$large: 1024;
+$desktop: 1280;
+
+// Box
+@mixin box($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+// Flexbox Toolkit
+@mixin flex-prop($row: null, $column: null, $pos-x: null, $pos-y: nul, $wrap: null) {
+    display: flex;
+    @if $column==column {
+      flex-direction: column;
+    } @else {
+      flex-direction: row;
+    }
+    @if $pos-x!=null {
+        justify-content: $pos-x;
+    }
+    @if $pos-y!=null {
+        align-items: $pos-y;
+    }
+    @if $wrap!=null {
+        flex-wrap: $wrap;
+    }
+  }
+
+// Cover Background
+@mixin cover-background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+@mixin mobile{
+    @media only screen and (min-width: ($mobile * 1px)){
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen and (min-width: ($tablet * 1px)) {
+      @content;
+    }
+}
+  
+@mixin large {
+    @media only screen and (min-width: ($large * 1px)) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: ($desktop * 1px)) {
+        @content;
+    }
+}
+
+@mixin fade($type) {
+    @if $type== "hide" {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 1s, opacity 1s;
+    } @else if $type== "show" {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 1s, opacity 1s;
+    }
+}
