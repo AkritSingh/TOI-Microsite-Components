@@ -1,1 +1,31 @@
-node_modules
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# Dependencies
+node_modules/
+.vscode/
+.history
+
+# Compiled output
+dist
+dist_storybook
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editors and IDEs
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Misc
+.DS_Store
+*.orig
+*.bak
+*.log*
+
+.yarn/install-state.gz
