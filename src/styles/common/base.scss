@@ -1,0 +1,26 @@
+// normalize css to go here
+// this should only be used if needed
+// mostly normalize/base css would be present on the parent page
+// if something is there which would break our components, if not present on parent page
+// then add that css here
+
+:global {
+  .aff_content {
+    *,
+    :after,
+    :before {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      letter-spacing: -0.2px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+    ul,li {
+      list-style: none;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+:global {
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+    height: 0;
+    display: none;
+  }
+
+  .rel {
+    position: relative;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .slick-list {
+    overflow: hidden;
+
+    .slick-slide {
+      float: left;
+    }
+  }
+
+  .contentwrapper {
+    margin: 0 auto;
+    max-width: $wrapper-width-small;
+    width: 100%;
+    padding: 0px;
+    background: $white;
+    overflow-x: hidden;
+
+  }
+
+  .strong {
+    font-weight: 600;
+  }
+
+  .em {
+    font-style: italic;
+  }
+
+  .u {
+    text-decoration: underline;
+  }
+
+}
+
+li {
+  list-style: none;
+}
+
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+// Slick Slider Global CSS for slick DOT Design for both mWeb & Desktop
+
+:global(.gutterAd) {
+  margin: 0 !important;
+  width: 0;
+  height: 0;
+}
+
+// @keyframes :global(opacity) {
+//   from {
+//     opacity: 0.2;
+//   }
+
+//   to {
+//     opacity: 1;
+//   }
+// }

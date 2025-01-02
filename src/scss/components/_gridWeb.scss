@@ -1,0 +1,188 @@
+@import 'scss/helpers/_variables.scss';
+@import 'scss/helpers/_mixins.scss';
+@import 'scss/components/_grid.scss';
+
+:global {
+  // component library spacing classes start //
+  .w_0 {
+    &.left_spacing {
+      @include left_spacing(16px);
+    }
+
+    &.right_spacing {
+      @include right_spacing(16px);
+      &.slick-slider {
+        .slick-slide {
+          > div {
+            padding-right: 32px;
+          }
+        }
+      }
+    }
+
+    &.bottom_spacing {
+      @include bottom_spacing(8px);
+    }
+
+    &.bottom_v_spacing {
+      @include bottom_v_spacing(8px);
+    }
+
+    &.bottom_h_spacing {
+      @include bottom_h_spacing(8px);
+    }
+
+    &.top_spacing {
+      @include top_spacing(8px);
+    }
+
+    &.top_v_spacing {
+      @include top_v_spacing(8px);
+    }
+
+    &.top_h_spacing {
+      @include top_h_spacing(8px);
+    }
+  }
+
+  .w_1_col {
+    &.top_spacing {
+      @include top_spacing(24px);
+    }
+    &.bottom_spacing {
+      @include bottom_spacing(24px);
+    }
+    &.left_spacing {
+      @include left_spacing_col(24px);
+    }
+    &.right_spacing {
+      @include right_spacing_col(24px);
+    }
+  }
+
+  .w_1 {
+    &.left_spacing {
+      @include left_spacing(16px);
+    }
+
+    &.right_spacing {
+      @include right_spacing(16px);
+      &.slick-slider {
+        .slick-slide {
+          > div {
+            padding-right: 32px;
+          }
+        }
+      }
+    }
+
+    &.bottom_spacing {
+      @include bottom_spacing(24px);
+    }
+
+    &.bottom_v_spacing {
+      @include bottom_v_spacing(24px);
+    }
+
+    &.bottom_h_spacing {
+      @include bottom_h_spacing(32px);
+    }
+
+    &.top_spacing {
+      @include top_spacing(24px);
+    }
+
+    &.top_v_spacing {
+      @include top_v_spacing(24px);
+    }
+
+    &.top_h_spacing {
+      @include top_h_spacing(32px);
+    }
+  }
+
+  // Web: 32px Bottom Spacing
+  .w_2 {
+    &.left_spacing {
+      @include left_spacing(16px);
+    }
+
+    &.right_spacing {
+      @include right_spacing(16px);
+      &.slick-slider {
+        .slick-slide {
+          > div {
+            padding-right: 32px;
+          }
+        }
+      }
+    }
+
+    &.bottom_spacing {
+      @include bottom_spacing(32px);
+    }
+
+    &.bottom_v_spacing {
+      @include bottom_v_spacing(32px);
+    }
+
+    &.bottom_h_spacing {
+      @include bottom_h_spacing(32px);
+    }
+
+    &.top_spacing {
+      @include top_spacing(32px);
+    }
+
+    &.top_v_spacing {
+      @include top_v_spacing(32px);
+    }
+
+    &.top_h_spacing {
+      @include top_h_spacing(32px);
+    }
+  }
+  // component library border classes start //
+  .brdr_1 {
+    &.w_0,
+    &.w_1 {
+      @include horizontal_border(8px, 16px);
+    }
+    @include vertical_border(8px);
+  }
+  .brdr_2 {
+    &.w_0,
+    &.w_1 {
+      @include horizontal_border(12px, 16px);
+    }
+    @include vertical_border(12px);
+  }
+  .brdr_3 {
+    &.w_0,
+    &.w_1 {
+      @include horizontal_border(16px, 16px);
+    }
+    @include vertical_border(16px);
+  }
+  .brdr_4 {
+    &.w_0,
+    &.w_1 {
+      @include horizontal_border(20px, 16px);
+    }
+    @include vertical_border(20px);
+  }
+  .brdr_6 {
+    &.w_0,
+    &.w_1 {
+      @include horizontal_border(24px, 16px);
+    }
+    @include vertical_border(24px);
+  }
+  .brdr_7 {
+    &.w_0,
+    &.w_1 {
+      @include horizontal_border(32px, 16px);
+    }
+    @include vertical_border(32px);
+  }
+}

@@ -1,0 +1,53 @@
+.dark_theme {
+  position: relative;
+}
+.colorChange {
+  background-color: red;
+}
+.heading {
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: 0.2px;
+  span {
+    position: relative;
+    display: inline-block;
+    width: 0;
+    &:after {
+      content: '';
+      box-sizing: border-box;
+      height: 10px;
+      width: 10px;
+      border-style: solid;
+      border-color: '#fff';
+      border-width: 0px 2px 2px 0px;
+      transform: rotate(-45deg);
+      transition: border-width 150ms ease-in-out;
+      position: absolute;
+      top: -12px;
+      right: -14px;
+    }
+  }
+  &.medium {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+}
+
+.span {
+  font:
+    700 20px/28px 'Montserrat',
+    Tahoma,
+    Sans-Serif;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.headingContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.smallCase {
+  text-transform: none;
+}

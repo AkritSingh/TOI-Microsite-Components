@@ -1,0 +1,77 @@
+@import './src/styles/common/helpers/variables.scss';
+@import './src/styles/common/helpers/mixins.scss';
+
+// .aff_content {
+  
+// }
+
+@mixin grid_colum($type) {
+  @for $i from 1 through 12 {
+    .aff_col_#{$type}_#{$i} {
+      max-width: percentage($i/12);
+      flex: 0 0 percentage($i/12);
+    }
+
+    .aff_order_#{$type}_#{$i} {
+      order: $i;
+    }
+  }
+}
+
+:global {
+  .aff_grid {
+    margin: 0 -16px;
+    @include flexbox();
+    @include flexwrap();
+
+    @include grid_colum(l);
+
+    @include tablet-landscape {
+      @include grid_colum(ml);
+    }
+
+    @include tablet-portrait {
+      @include grid_colum(m);
+    }
+
+    [class*='aff_col_'] {
+      padding-right: 16px;
+      padding-left: 16px;
+      width: 100%;
+    }
+  }
+
+  .aff_cs_small {
+    .aff_grid {
+      margin: 0 -12px;
+      [class*='aff_col_'] {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+    }
+  }
+
+  .aff_cs_large {
+    .aff_grid {
+      margin: 0 -20px;
+      [class*='aff_col_'] {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+    }
+  }
+
+  .aff_cs_medium {
+    padding: 16px;
+    .aff_e2e {
+      margin: 0 -16px;
+    }
+  }
+
+  .aff_cs_no {
+    padding: 0;
+    .aff_e2e {
+      margin: 0;
+    }
+  }
+}

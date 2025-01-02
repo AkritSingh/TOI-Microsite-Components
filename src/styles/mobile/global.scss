@@ -1,0 +1,38 @@
+// .aff_content {
+
+// }
+
+:global {
+  .aff_cs_small {
+    padding: 12px;
+    .aff_e2e {
+      margin: 0 -12px;
+    }
+  }
+
+  .aff_cs_medium {
+    padding: 16px;
+    .aff_e2e {
+      margin: 0 -16px;
+    }
+  }
+
+  .aff_cs_large {
+    padding: 20px;
+    .aff_e2e {
+      margin: 0 -20px;
+    }
+  }
+
+  .aff_cs_no {
+    padding: 0;
+    .aff_e2e {
+      margin: 0;
+    }
+  }
+  
+  .aff_cs_tiny {
+    padding: 6px;
+  }
+
+}

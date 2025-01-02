@@ -1,0 +1,332 @@
+@import 'scss/helpers/_variables.scss';
+@import 'scss/helpers/_mixins.scss';
+
+@mixin grid_colum($type) {
+  @for $i from 1 through 12 {
+    .col_#{$type}_#{$i} {
+      max-width: percentage($i/12);
+      flex: 0 0 percentage($i/12);
+    }
+  }
+}
+
+// .order_#{$type}_#{$i} {
+//   order: $i;
+// }
+//Sample
+// .col_#{$type}_1 {
+//   width: percentage(1/12);
+// }
+
+// component library mixins start //
+
+// Columns spacings //
+// 1. left_spacing_col
+// 2. right_spacing_col
+// 3. top_spacing_col
+// 4. bottom_spacing_col
+
+@mixin left_spacing_col($val) {
+  margin-left: $val;
+}
+
+@mixin right_spacing_col($val) {
+  margin-right: $val;
+}
+
+@mixin top_spacing_col($val) {
+  margin-top: $val;
+}
+
+@mixin bottom_spacing_col($val) {
+  margin-bottom: $val;
+}
+
+// Story list spacings
+// 1. left_spacing
+// 2. right_spacing
+// 3. left_spacing_mweb
+// 4. right_spacing_mweb
+// 5. bottom_spacing
+// 6. bottom_h_spacing
+// 7. bottom_v_spacing
+// 8. top_spacing
+// 9. top_h_spacing
+// 10. top_v_spacing
+
+@mixin left_spacing($val) {
+  margin-left: -$val;
+  > div,
+  section {
+    padding-left: $val;
+  }
+}
+
+@mixin right_spacing($val) {
+  margin-right: -$val;
+  > div,
+  section {
+    padding-right: $val;
+  }
+}
+
+@mixin left_spacing_mweb($val) {
+  > div,
+  section {
+    padding-left: $val;
+  }
+  > [class*='col'] {
+    padding-left: 0;
+  }
+}
+
+@mixin right_spacing_mweb($val) {
+  > div,
+  section {
+    padding-right: $val;
+  }
+  > [class*='col'] {
+    padding-right: 0;
+  }
+}
+
+@mixin bottom_spacing($val) {
+  margin-bottom: $val;
+}
+
+@mixin top_spacing($val) {
+  margin-top: $val;
+}
+
+@mixin bottom_v_spacing($val) {
+  &.vertical_12 {
+    > div,
+    section {
+      padding-bottom: $val;
+      &:last-of-type {
+        padding-bottom: 0px;
+      }
+    }
+    &.vertical_list_padding {
+      &:last-of-type {
+        padding-bottom: $val;
+      }
+    }
+  }
+}
+
+@mixin top_v_spacing($val) {
+  &.vertical_12 {
+    > div,
+    section {
+      padding-top: $val;
+      // &:first-of-type{
+      //   padding-top: 0px;
+      // }
+    }
+  }
+}
+
+@mixin bottom_h_spacing($val) {
+  @for $i from 1 through 12 {
+    &.horizontal_#{$i} {
+      row-gap: $val;
+      margin-bottom: $val;
+    }
+  }
+}
+
+@mixin top_h_spacing($val) {
+  @for $i from 1 through 12 {
+    &.horizontal_#{$i} {
+      > div,
+      section {
+        margin-top: $val;
+      }
+    }
+  }
+}
+
+// Column Borders
+
+@mixin border_col($tb_val, $lr_val) {
+  position: relative;
+  &.b_brdr {
+    padding-bottom: 0;
+    &::after {
+      content: '';
+      display: block;
+      border-bottom: 1px dotted #a5a5a5;
+      padding-bottom: $tb_val;
+    }
+  }
+  &.t_brdr {
+    padding-top: 0;
+    &::before {
+      content: '';
+      display: block;
+      border-top: 1px dotted #a5a5a5;
+      padding-top: $tb_val;
+    }
+  }
+
+  &.r_brdr {
+    border-right: 1px dotted #a5a5a5;
+    padding-right: $lr_val !important;
+    + div {
+      padding-left: $lr_val !important;
+    }
+  }
+  &.l_brdr {
+    border-left: 1px dotted #a5a5a5;
+    padding-left: $lr_val !important;
+  }
+}
+
+@mixin vertical_border($tb_val) {
+  position: relative;
+  &.b_brdr {
+    &.vertical_12 {
+      > div:not(.brdr_skip) {
+        padding-bottom: 0px;
+        margin-bottom: $tb_val;
+        &:not(:last-of-type):after {
+          content: '';
+          display: block;
+          border-bottom: 1px dotted #a5a5a5;
+          padding-bottom: $tb_val;
+        }
+      }
+    }
+  }
+
+  &.t_brdr {
+    &.vertical_12 {
+      > div:not(.brdr_skip) {
+        padding-bottom: 0px;
+        margin-top: $tb_val;
+        // &:not(:first-of-type):before {
+        &:before {
+          content: '';
+          display: block;
+          border-top: 1px dotted #a6a6a6;
+          padding-top: $tb_val;
+        }
+      }
+    }
+  }
+
+  &.r_brdr {
+    &.vertical_12 {
+      border-right: 1px dotted #a6a6a6;
+    }
+  }
+
+  &.l_brdr {
+    &.vertical_12 {
+      border-left: 1px dotted #a6a6a6;
+    }
+  }
+}
+
+@mixin horizontal_border($tb_val, $lr_spacing) {
+  @for $i from 1 through 12 {
+    &.horizontal_#{$i} {
+      &.b_brdr {
+        position: relative;
+        &::after {
+          content: '';
+          border-bottom: 1px dotted #a5a5a5;
+          width: 100%;
+          margin: 0 $lr_spacing;
+          padding-bottom: $tb_val;
+        }
+      }
+      &.t_brdr {
+        position: relative;
+        &::before {
+          content: '';
+          border-top: 1px dotted #a5a5a5;
+          width: 100%;
+          margin: 0 $lr_spacing;
+          padding-top: $tb_val;
+        }
+      }
+      &.r_brdr {
+        > div:not(:last-of-type) {
+          border-right: 1px dotted #a5a5a5;
+        }
+      }
+      &.l_brdr {
+        > div:not(:first-of-type) {
+          border-left: 1px dotted #a5a5a5;
+        }
+      }
+    }
+  }
+}
+
+// component library mixins end //
+
+// general grid css start //
+
+:global {
+  .grid_wrapper,
+  .row {
+    margin: 0 -16px;
+    @include flexbox();
+    @include flexwrap();
+    @include grid_colum(l);
+
+    .col_l_hide {
+      display: none !important;
+    }
+
+    @include tablet-portrait {
+      @include grid_colum(m);
+
+      .hide_m,
+      .col_m_hide {
+        display: none !important;
+      }
+    }
+
+    @include mobile {
+      @include grid_colum(sm);
+    }
+
+    > [class*='col'] {
+      padding-right: 16px;
+      padding-left: 16px;
+      width: 100%;
+    }
+
+    .push_m_6 {
+      margin-left: 50%;
+      margin-top: -340px;
+    }
+  }
+
+  .brdr_1_col {
+    @include border_col(8px, 8px);
+  }
+  .brdr_2_col {
+    @include border_col(12px, 12px);
+  }
+  .brdr_3_col {
+    @include border_col(16px, 16px);
+  }
+  .brdr_4_col {
+    @include border_col(20px, 20px);
+  }
+  .brdr_6_col {
+    @include border_col(24px, 24px);
+  }
+  .brdr_7_col {
+    @include border_col(32px, 32px);
+  }
+
+  // component library border classes end //
+  // component library spacing classes end //
+}
+// general grid css end //

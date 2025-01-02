@@ -1,0 +1,221 @@
+@import 'scss/helpers/_variables.scss';
+@import 'scss/helpers/_mixins.scss';
+@import 'scss/components/_grid.scss';
+:global {
+  .m_0 {
+    &.left_spacing {
+      margin: 0;
+      @include left_spacing_mweb(16px);
+    }
+
+    &.right_spacing {
+      margin: 0;
+      @include right_spacing_mweb(16px);
+      &.crs {
+        &::after {
+          content: '';
+          min-width: 1px;
+          padding-right: 16px;
+        }
+      }
+    }
+
+    &.bottom_spacing {
+      @include bottom_spacing(8px);
+    }
+
+    &.bottom_v_spacing {
+      @include bottom_v_spacing(8px);
+    }
+
+    &.bottom_h_spacing {
+      @include bottom_h_spacing(8px);
+    }
+
+    &.top_spacing {
+      @include top_spacing(8px);
+    }
+
+    &.top_v_spacing {
+      @include top_v_spacing(8px);
+    }
+
+    &.top_h_spacing {
+      @include top_h_spacing(8px);
+    }
+  }
+
+  .m_1 {
+    &.left_spacing {
+      margin: 0;
+      @include left_spacing_mweb(16px);
+    }
+
+    &.right_spacing {
+      margin: 0;
+      @include right_spacing_mweb(16px);
+      &.crs {
+        &::after {
+          content: '';
+          min-width: 1px;
+          padding-right: 16px;
+        }
+      }
+    }
+
+    &.bottom_spacing {
+      @include bottom_spacing(12px);
+    }
+
+    &.bottom_v_spacing {
+      @include bottom_v_spacing(12px);
+    }
+
+    &.bottom_h_spacing {
+      @include bottom_h_spacing(12px);
+    }
+
+    &.top_spacing {
+      @include top_spacing(12px);
+    }
+
+    &.top_v_spacing {
+      @include top_v_spacing(12px);
+    }
+
+    &.top_h_spacing {
+      @include top_h_spacing(12px);
+    }
+  }
+
+  .m_2 {
+    &.left_spacing {
+      margin: 0;
+      @include left_spacing_mweb(16px);
+    }
+
+    &.right_spacing {
+      margin: 0;
+      @include right_spacing_mweb(16px);
+      &.crs {
+        &::after {
+          content: '';
+          min-width: 1px;
+          padding-right: 16px;
+        }
+      }
+    }
+
+    &.bottom_spacing {
+      @include bottom_spacing(16px);
+    }
+
+    &.bottom_v_spacing {
+      @include bottom_v_spacing(16px);
+    }
+
+    &.bottom_h_spacing {
+      @include bottom_h_spacing(16px);
+    }
+
+    &.top_spacing {
+      @include top_spacing(16px);
+    }
+
+    &.top_v_spacing {
+      @include top_v_spacing(16px);
+    }
+
+    &.top_h_spacing {
+      @include top_h_spacing(16px);
+    }
+  }
+
+  .m_3 {
+    &.left_spacing {
+      margin: 0;
+      @include left_spacing_mweb(16px);
+    }
+
+    &.right_spacing {
+      margin: 0;
+      @include right_spacing_mweb(16px);
+      &.crs {
+        &::after {
+          content: '';
+          min-width: 1px;
+          padding-right: 16px;
+        }
+      }
+    }
+
+    &.bottom_spacing {
+      @include bottom_spacing(20px);
+    }
+
+    &.bottom_v_spacing {
+      @include bottom_v_spacing(20px);
+    }
+
+    &.bottom_h_spacing {
+      @include bottom_h_spacing(20px);
+    }
+
+    &.top_spacing {
+      @include top_spacing(20px);
+    }
+
+    &.top_v_spacing {
+      @include top_v_spacing(20px);
+    }
+
+    &.top_h_spacing {
+      @include top_h_spacing(20px);
+    }
+  }
+  // component library spacing classes end //
+
+  // component library border classes start //
+  .brdr_1 {
+    &.m_1,
+    &.m_0 {
+      @include horizontal_border(8px, 16px);
+    }
+    @include vertical_border(8px);
+  }
+  .brdr_2 {
+    &.m_1,
+    &.m_0 {
+      @include horizontal_border(12px, 16px);
+    }
+    @include vertical_border(12px);
+  }
+  .brdr_3 {
+    &.m_1,
+    &.m_0 {
+      @include horizontal_border(16px, 16px);
+    }
+    @include vertical_border(16px);
+  }
+  .brdr_4 {
+    &.m_1,
+    &.m_0 {
+      @include horizontal_border(20px, 16px);
+    }
+    @include vertical_border(20px);
+  }
+  .brdr_6 {
+    &.m_1,
+    &.m_0 {
+      @include horizontal_border(24px, 16px);
+    }
+    @include vertical_border(24px);
+  }
+  .brdr_7 {
+    &.m_1,
+    &.m_0 {
+      @include horizontal_border(32px, 16px);
+    }
+    @include vertical_border(32px);
+  }
+}
