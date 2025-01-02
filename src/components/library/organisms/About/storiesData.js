@@ -69,9 +69,6 @@ export const data = {
       config:{
         
       }
-    },
-    variant1: {
-      
     }
 }
 

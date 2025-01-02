@@ -1,11 +1,11 @@
 /* eslint-disable css-modules/no-unused-class */
 import React from 'react';
-import About from 'components/library/organisms/About/About';
+import Header from './Header';
 import { data } from './storiesData';
 
 export default {
-  title: 'Organisms/About',
-  component: About,
+  title: 'Organisms/Header',
+  component: Header,
   parameters: {},
 };
 
@@ -13,12 +13,12 @@ export const Default = {
   args: {
     ...data.default,
   },
-  render: (args) => <About {...args} />,
+  render: (args) => <Header {...args} />,
 };
 
 export const Test = {
   args: {
-    type: 'about_v3',
+    type: 'Header',
     data: {
       image: {
         path: '',
@@ -100,5 +100,5 @@ export const Test = {
     },
     config: {},
   },
-  render: (args) => <About {...args} />,
+  render: (args) => <Header {...args} />,
 };

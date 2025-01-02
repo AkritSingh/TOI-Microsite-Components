@@ -1,11 +1,11 @@
 /* eslint-disable css-modules/no-unused-class */
 import React from 'react';
-import About from 'components/library/organisms/About/About';
+import Banner from 'components/library/organisms/Banner/Banner';
 import { data } from './storiesData';
 
 export default {
-  title: 'Organisms/About',
-  component: About,
+  title: 'Organisms/Banner',
+  component: Banner,
   parameters: {},
 };
 
@@ -13,7 +13,7 @@ export const Default = {
   args: {
     ...data.default,
   },
-  render: (args) => <About {...args} />,
+  render: (args) => <Banner {...args} />,
 };
 
 export const Test = {
@@ -100,5 +100,5 @@ export const Test = {
     },
     config: {},
   },
-  render: (args) => <About {...args} />,
+  render: (args) => <Banner {...args} />,
 };
