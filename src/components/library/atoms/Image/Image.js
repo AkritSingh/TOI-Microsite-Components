@@ -1,150 +1,60 @@
-import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { getIntersectionObserver } from "../../utils/intersectionObserver";
-import styles from './Image.module.scss';
+import React from 'react'
+import PropTypes from 'prop-types'
+import useStyles from 'isomorphic-style-loader-react18/useStyles';
+import s from './Image.scss';
 
-function Image({ type, data, layout, config }) {
-  // desturcture here
+export default function Image({
+  config,
+  data,
+}) {
+  useStyles(s);
+  const { layout={}, onClick=undefined } = config;
+  const { id = '', styleObj = {}, classname = '' } = layout || {};
+  const {src, alt} = data || {};
 
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(config?.loadingStyle !== 'inview');
-  const imageRef = useRef(null);
-
-  useEffect(() => {
-    if (config?.loadingStyle !== 'inview' || !imageRef.current) return;
-
-    const observer = getIntersectionObserver({
-      threshold: config.threshold || 0.1,
-      onIntersect: (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.unobserve(entry.target);
-        }
-      },
-    });
-
-    observer.observe(imageRef.current);
-
-    return () => {
-      if (imageRef.current) {
-        observer.unobserve(imageRef.current);
-      }
-    };
-  }, [config?.loadingStyle, config?.threshold]);
-
-  const handleLoad = () => {
-    setIsLoaded(true);
-  };
-
-  const getLayoutStyles = () => {
-    const { layout: imageLayout, width, height } = layout;
-    
-    switch (imageLayout) {
-      case 'cover':
-        return {
-          width: width || '100%',
-          height: height || '100%',
-          objectFit: 'cover',
-        };
-      case 'contain':
-        return {
-          width: width || '100%',
-          height: height || '100%',
-          objectFit: 'contain',
-        };
-      case 'original':
-        return {
-          width: data.width || 'auto',
-          height: 'auto',
-          objectFit: 'none',
-        };
-      case 'responsive':
-      default:
-        return {
-          width: width || '100%',
-          height: height || 'auto',
-          objectFit: 'contain',
-        };
+  function handleClick(event) {
+    if (onClick && typeof onClick === 'function') {
+      onClick(event);
     }
-  };
+  }
 
-  const imageStyles = {
-    ...getLayoutStyles(),
-    opacity: isLoaded ? 1 : 0,
-    transition: 'opacity 0.3s ease-in-out',
-  };
-
-  const shouldRender = config?.loadingStyle === 'immediate' || isInView;
-
-  if (type !== 'image') return null;
-
+  const imgAttr = {
+    id,
+    src,
+    className: `${classname}`,
+    onClick: handleClick,
+  }
   return (
-    <div
-      ref={imageRef}
-      className={`${styles.imageWrapper} ${layout?.class || ''}`}
-      id={layout?.id}
-    >
-      {shouldRender && (
-        <>
-          {layout?.placeHolderSrc && !isLoaded && (
-            <div
-              className={styles.placeholder}
-              style={{
-                backgroundImage: `url(${layout.placeHolderSrc})`,
-                ...getLayoutStyles(),
-              }}
-            />
-          )}
-          <img
-            src={data.src}
-            alt={data.alt}
-            title={data.altTitle}
-            loading={config?.loadingStyle === 'lazy' ? 'lazy' : 'eager'}
-            onLoad={handleLoad}
-            style={imageStyles}
-            width={data.width}
-            height={layout.height}
-          />
-        </>
-      )}
-    </div>
-  );
+    <img {...imgAttr} alt={alt} style= {styleObj} />
+  )
 }
 
 Image.propTypes = {
-  type: PropTypes.oneOf(['image']).isRequired,
   data: PropTypes.shape({
-    width: PropTypes.string,
-    src: PropTypes.string.isRequired,
-    msid: PropTypes.string,
-    alt: PropTypes.string.isRequired,
-    altTitle: PropTypes.string,
-  }).isRequired,
-  layout: PropTypes.shape({
-    id: PropTypes.string,
-    class: PropTypes.string,
-    layout: PropTypes.oneOf(['responsive', 'cover', 'contain', 'original']),
-    width: PropTypes.string,
-    height: PropTypes.string,
-    imgsize: PropTypes.string,
-    resizemode: PropTypes.number,
-    placeHolderSrc: PropTypes.string,
+    src: PropTypes.string,
+    alt: PropTypes.string,
   }),
   config: PropTypes.shape({
-    loadingStyle: PropTypes.oneOf(['lazy', 'immediate', 'inview']),
-    threshold: PropTypes.number,
+    layout: PropTypes.shape({
+      id: PropTypes.string,
+      classname: PropTypes.string,
+      styleObj: PropTypes.shape(),
+    }),
+    onClick: PropTypes.func,
   }),
-};
+}
 
 Image.defaultProps = {
-  layout: {
-    layout: 'responsive',
+  data:{
+      src: '',
+      alt: 'image',
   },
   config: {
-    loadingStyle: 'lazy',
-    threshold: 0,
-  },
-};
-
-export default Image;
+    layout:{
+      id: '',
+      classname: '',
+      styleObj: {},
+    },
+    onClick: undefined,
+  }
+}

@@ -1,26 +1,35 @@
 import React from 'react'
-import propTypes from 'prop-types'
-import s from './Link.scss'
-import useStyles from 'isomorphic-style-loader-react18/useStyles';
+import PropTypes from 'prop-types'
+// import useStyles from 'isomorphic-style-loader-react18/useStyles';
+// import s from './Link.scss'
 
-export default function Link(props) {
-  useStyles(s);
-  const { config, target, onClick, children, url, text } = props;
-  const { styleObj = {}, classname = '' } = config || {};
-  const { nofollow = '' } = config || {};
+export default function Link({
+  config,
+  data,
+  children,
+}) {
+  // useStyles(s);
+  const { layout={}, onClick=undefined } = config;
+  const { id = '', styleObj = {}, classname = '' } = layout || {};
+  const { nofollow = '', target, url, text='' } = data || {};
+
   function handleClick(event) {
     if (onClick && typeof onClick === 'function') {
       onClick(event);
     }
   }
+
+  const linkAttr = {
+    id,
+    href: url,
+    className: `${classname}`,
+    onClick: handleClick,
+    rel: nofollow,
+    target,
+  }
   return (
     <a
-      href={url}
-      className={`${s.active} ${classname}`}
-      onClick={handleClick}
-      style={styleObj}
-      rel={nofollow}
-      target={target}
+      {...linkAttr} style= {styleObj}
     >
       {text || children}
     </a>
@@ -28,27 +37,37 @@ export default function Link(props) {
 }
 
 Link.propTypes = {
-  config: propTypes.shape({
-    styleObj: propTypes.object,
-    classname: propTypes.string,
-    nofollow: propTypes.string,
+  children: PropTypes.node,
+  data: PropTypes.shape({
+    text: PropTypes.string,
+    nofollow: PropTypes.string,
+    target: PropTypes.string,
+    url: PropTypes.string,
   }),
-  target: propTypes.string,
-  onClick: propTypes.func,
-  children: propTypes.node,
-  url: propTypes.string,
-  text: propTypes.string,
+  config: PropTypes.shape({
+    layout: PropTypes.shape({
+      id: PropTypes.string,
+      classname: PropTypes.string,
+      styleObj: PropTypes.shape(),
+    }),
+    onClick: PropTypes.func,
+  }),
 }
 
 Link.defaultProps = {
-  config: {
-    styleObj: {},
-    classname: '',
-    nofollow: '',
-  },
-  target: undefined,
-  onClick: undefined,
   children: undefined,
-  url: undefined,
-  text: '',
+  data:{
+      text: 'Link',
+      url: '#',
+      nofollow: '',
+      target: undefined,
+  },
+  config: {
+    layout:{
+      id: '',
+      classname: '',
+      styleObj: {},
+    },
+    onClick: undefined,
+  }
 }

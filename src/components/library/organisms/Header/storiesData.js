@@ -1,75 +1,55 @@
 /* eslint-disable import/prefer-default-export */
 export const data = {
   default: {
-    type: 'about_v3',
-    data: {
-      image: {
-        path: '',
-      },
-      video: {
-        autoPlay: false,
-        inLoop: false,
-      },
-      title: {
-        text: 'About Money Matters & More',
-      },
-      denmark: {
-        msid: 115244096,
-        hostId: 83,
-      },
-      content: {
-        text: '',
-      },
-      ad: {
-        type: 'mrec',
-      },
-    },
-    layout: {
-      components: {
-        background: {
-          isVisible: true,
-        },
-        leftContent: {
-          isVisible: true,
-          title: {
-            isVisible: true,
-            sectionLayout: 'h1',
-            class: 'heading1 font24 transform-none left ',
-          },
-          sub_title: {
-            isVisible: true,
-            sectionLayout: 'h3',
-          },
-          description: {
-            isVisible: true,
-            sectionLayout: 'h5',
-          },
-          content: {
-            isVisible: false,
-            sectionLayout: 'normal',
-          },
-          denmark: {
-            isVisible: true,
-          },
-          ctaBtn: {
-            isVisible: true,
-          },
-        },
-        rightContent: {
-          isVisible: true,
-          content: {
-            wrapContent: true,
-            type: 'ad',
-            position: 'right',
-          },
-        },
-      },
-      id: 'Banner',
-    },
+    type: 'header_v3',
     config: {
-
-    }
-  }
-}
-
-
+      layout: {
+        components: {
+          back_to_button: {
+            isVisible: true,
+            class: 'light-pink-bg ',
+          },
+          logo: {
+            isVisible: true,
+          },
+          navMenu: {
+            isVisible: false,
+          },
+        },
+      },
+    }, 
+    data: {
+      background: {
+        colors: ['#fff0', '#fff0'],
+      },
+      navMenu: {
+        navItems: [
+          {
+            text: 'Home',
+            link: '#',
+            isActive: true,
+          },
+          {
+            text: 'Partners',
+            link: '#partners',
+          },
+          {
+            text: 'Articles',
+            link: '#articles',
+          },
+        ],
+        activeNav: 'Home',
+      },
+      socialIcons: {
+        items: [],
+      },
+      back_to_button: {
+        channel: 'TOI',
+      },
+      logo: {
+        image: 'https://static.toiimg.com/photo/114077794.cms ',
+        link: 'https://www.airnewzealand.com.sg/flight-deals-to-new-zealand-from-india/?utm_source=timesofindia&utm_medium=display&utm_campaign=brand-IN-CAG-JV-202409&utm_content=awareness-advertorial&dclid=CIjjqfv27IgDFW8GgwMdNYIYLg',
+      },
+    },
+  },
+};

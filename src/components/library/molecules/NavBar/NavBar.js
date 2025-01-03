@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Link from '../../atoms/Link/Link'
 import s from './NavBar.scss'
 import useStyles from 'isomorphic-style-loader-react18/useStyles';
@@ -62,9 +62,9 @@ export default function NavBar(props) {
 }
 
 NavBar.propTypes = {
-  data: propTypes.shape({
-    navItems: propTypes.array,
-    activeNav: propTypes.string,
+  data: PropTypes.shape({
+    navItems: PropTypes.arrayOf(PropTypes.shape()),
+    activeNav: PropTypes.string,
   })
 
 }

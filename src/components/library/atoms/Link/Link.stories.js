@@ -11,6 +11,20 @@ export default {
 
 
 export const Default = {
-  args: {},
+  args: {
+    type: 'link',
+    data:{
+        text: 'Link',
+        url: '#',
+        nofollow: '',
+    },
+    config: {
+      layout:{
+        id: '',
+        styleObj: {},
+        classname: '',
+      }
+    }
+  },
   render: (args) => <Link {...args} />,
 };

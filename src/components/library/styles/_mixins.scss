@@ -11,13 +11,9 @@ $desktop: 1280;
 }
 
 // Flexbox Toolkit
-@mixin flex-prop($row: null, $column: null, $pos-x: null, $pos-y: nul, $wrap: null) {
+@mixin flex-prop($direction: row, $pos-x: null, $pos-y: null, $wrap: null) {
     display: flex;
-    @if $column==column {
-      flex-direction: column;
-    } @else {
-      flex-direction: row;
-    }
+    flex-direction: $direction;
     @if $pos-x!=null {
         justify-content: $pos-x;
     }
@@ -70,4 +66,9 @@ $desktop: 1280;
       opacity: 1;
       transition: visibility 1s, opacity 1s;
     }
+}
+
+@mixin object-fit($fit, $position){
+    object-fit: $fit;
+    object-position: $position;
 }

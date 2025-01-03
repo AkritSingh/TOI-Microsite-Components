@@ -1,5 +1,5 @@
 import React from 'react'
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import s from './Button.scss'
 import useStyles from 'isomorphic-style-loader-react18/useStyles';
 
@@ -31,13 +31,13 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
-  config: propTypes.shape({
-    styleObj: propTypes.object,
-    classname: propTypes.string,
+  config: PropTypes.shape({
+    styleObj: PropTypes.shape({}),
+    classname: PropTypes.string,
   }),
-  onClick: propTypes.func,
-  children: propTypes.node,
-  disabled: propTypes.bool,
+  onClick: PropTypes.func,
+  children: PropTypes.node,
+  disabled: PropTypes.bool,
 }
 
 Button.defaultProps = {

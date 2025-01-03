@@ -1,3 +1,44 @@
-.about{
-  background: white;
+@import 'src/components/library/styles/_mixins.scss';
+
+.header{
+  padding: 0px 20px;
+  @include flex-prop(column, center, center);
+  @include tablet {
+    @include flex-prop(row, center, center);
+  }
+  .hleft{
+    @include flex-prop(row, flex-start, center, wrap);
+    @include box(100%);
+    margin-bottom: 10px;
+    @include tablet {
+      margin-bottom: 0px;
+    }
+    .backToTOI{
+      @include box(50px, 50px);
+      background: rgb(0, 0, 0);
+      @include flex-prop(column, center, center);
+      border-radius: 7px;
+      color: white;
+      font-size: 11px;
+      span{
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+    .logoContainer{
+      @include box(auto, 50px);
+      margin-left: 30px;
+      .logo{
+        @include box(100%); 
+        @include object-fit(contain, center); 
+      }
+    }
+    .hright{
+      @include box(100%);
+      
+    }
+  }
+
+  
+  
 }

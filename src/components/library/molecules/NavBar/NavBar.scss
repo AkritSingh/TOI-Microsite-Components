@@ -1,10 +1,11 @@
-@import "src/components/library/styles/_colors";
+// @import "src/components/library/styles/_colors";
 @import 'src/components/library/styles/_mixins.scss';
 
 
-.navBar {
-  display: flex;
-  flex-direction: row;
-  @include box(200px);
-  background-color: $red;
+ul.navBar {
+  @include flex-prop(row, center, center);
+  @include box(100%);
+  li>a{
+    padding: 5px 10px;
+  }
 }
