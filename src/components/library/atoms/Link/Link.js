@@ -7,10 +7,12 @@ export default function Link({
   config,
   data,
   children,
+  id,
+  classname,
 }) {
   // useStyles(s);
   const { layout={}, onClick=undefined } = config;
-  const { id = '', styleObj = {}, classname = '' } = layout || {};
+  const { id: layoutId = '', styleObj = {}, classname: layoutClassname = '' } = layout || {};
   const { nofollow = '', target, link, text='' } = data || {};
 
   function handleClick(event) {
@@ -20,9 +22,9 @@ export default function Link({
   }
 
   const linkAttr = {
-    id,
+    id: id || layoutId,
     href: link,
-    className: `${classname}`,
+    className: `${classname || layoutClassname}`,
     onClick: handleClick,
     rel: nofollow,
     target,
@@ -38,6 +40,8 @@ export default function Link({
 
 Link.propTypes = {
   children: PropTypes.node,
+  classname: PropTypes.string,
+  id: PropTypes.string,
   data: PropTypes.shape({
     text: PropTypes.string,
     nofollow: PropTypes.string,
@@ -56,6 +60,8 @@ Link.propTypes = {
 
 Link.defaultProps = {
   children: undefined,
+  classname: '',
+  id: '',
   data:{
       text: 'Link',
       link: '#',

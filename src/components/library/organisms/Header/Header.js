@@ -1,16 +1,17 @@
-/* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
+/* eslint-disable css-modules/no-unused-class */
+/* eslint-disable import/no-relative-packages */
+/* eslint-disable import/newline-after-import */
 import React from 'react';
+
+import PropTypes from 'prop-types';
+import useStyles from 'isomorphic-style-loader-react18/useStyles';
+import s from './Header.scss';
 import Link from '../../atoms/Link/Link';
 import Image from '../../atoms/Image/Image';
 import Background from '../../atoms/Background/Background';
 import NavBar from '../../molecules/NavBar/NavBar';
-
-import s from './Header.scss';
-import PropTypes from 'prop-types';
-import useStyles from 'isomorphic-style-loader-react18/useStyles';
-
-
 export default function Header({
   data, config
 }) {
@@ -19,66 +20,34 @@ export default function Header({
   const { id, class: classname, styleObj, components} = layout;
   const {background, navMenu, back_to_button, logo} = data;
 
-
-  const backToToiProps = {
-    data: {
-      url: back_to_button?.link || 'https://timesofindia.indiatimes.com',
-      nofollow: '',
-      
-    },
-    config: {
-      layout: {
-        id: `back_to_${back_to_button?.channel || 'TOI'}`,
-        classname: `${s.backToTOI} ${components?.back_to_button?.class}`
-      }
-    }
-  };
-
-  const logoProps = {
-    link: {
-      data: {
-        url:  logo?.link || 'https://timesofindia.indiatimes.com/',
-        nofollow: '',
-      },
-      config: {
-        layout: {
-          id: 'logo',
-          classname: s.logoContainer
-        }
-      }
-    },
-    img: {
-      data: {
-        src: logo?.image || 'https://static.toiimg.com/photo/103690269.cms',
-        alt: logo?.alt ||'logo',
-      },
-      config: {
-        layout: {
-          id: 'logo',
-          classname: `${s.logo} ${components?.logo?.class}`
-        }
-      } 
-    }
-  }
-
+  
   const component = ( 
   <Background {...background} className={`${s.header} ${classname}`} id={id} style={styleObj}>
       <div className={s.hleft}>
         {/* back to button */}
-        <Link 
-          {...backToToiProps}
+        {components?.back_to_button && 
+        (<Link 
+          {...back_to_button}
+          id="back_to_channel"
+          classname={s.backToTOI}
         >Back to <br/><span>{back_to_button?.channel || 'TOI'}</span>
-        </Link>
+        </Link>)
+        }
         
-         {/* Logo */}
-        <Link {...logoProps.link}> 
-          <Image {...logoProps.img}/>
-        </Link>        
+        {/* Logo */}
+        {components?.logo && (<Link {...logo} 
+         id="main_logo"
+         classname={s.logoContainer}
+        > 
+          <Image {...logo}
+          classname={s.logo}/>
+        </Link> )
+        }   
       </div>
       <div className="hright">
         {/* #todoMicrosite: search bar */}
         {/* navigation */}
-        <NavBar {...navMenu}/>
+        {components?.logo && (<NavBar {...navMenu}/>)}  
       </div>
     </Background>
   );

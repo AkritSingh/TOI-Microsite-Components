@@ -1,10 +1,12 @@
+/* eslint-disable import/no-relative-packages */
+/* eslint-disable import/order */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import Link from '../../atoms/Link/Link'
 import s from './NavBar.scss'
 import useStyles from 'isomorphic-style-loader-react18/useStyles';
+import Link from '../../atoms/Link/Link'
 
 export default function NavBar({data, config}) {
   useStyles(s);

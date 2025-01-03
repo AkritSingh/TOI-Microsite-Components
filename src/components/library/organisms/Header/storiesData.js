@@ -58,11 +58,15 @@ export const data = {
         items: [],
       },
       back_to_button: {
-        channel: 'TOI',
+        data:{
+          channel: 'TOI',
+        }
       },
       logo: {
-        image: 'https://static.toiimg.com/photo/114077794.cms ',
-        link: 'https://www.airnewzealand.com.sg/flight-deals-to-new-zealand-from-india/?utm_source=timesofindia&utm_medium=display&utm_campaign=brand-IN-CAG-JV-202409&utm_content=awareness-advertorial&dclid=CIjjqfv27IgDFW8GgwMdNYIYLg',
+        data: {
+          src: 'https://static.toiimg.com/photo/114077794.cms ',
+          link: 'https://www.airnewzealand.com.sg/flight-deals-to-new-zealand-from-india/?utm_source=timesofindia&utm_medium=display&utm_campaign=brand-IN-CAG-JV-202409&utm_content=awareness-advertorial&dclid=CIjjqfv27IgDFW8GgwMdNYIYLg',
+        }        
       },
     },
   },

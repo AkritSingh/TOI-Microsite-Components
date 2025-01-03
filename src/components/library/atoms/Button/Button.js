@@ -4,48 +4,62 @@ import s from './Button.scss'
 import useStyles from 'isomorphic-style-loader-react18/useStyles';
 
 
-export default function Button(props) {
+export default function Button({
+  children, data, config
+}) {
   useStyles(s);
-  const { config, onClick, children, disabled } = props;
-  const { styleObj = {}, classname = '' } = config;
+  const { layout, onClick } = config;
+  const { styleObj, classname, id, disabled } = layout;
+  const { text } = data;
+
   function handleClick(event) {
     if (onClick && typeof onClick === 'function') {
       onClick(event);
     }
   }
   return (
-
-
-
     <button
       type="button"
       className={classname}
       onClick={handleClick}
       style={styleObj}
+      id={id}
       disabled={disabled}
     >
-      {children}
+      {text || children}
     </button>
 
   )
 }
 
 Button.propTypes = {
-  config: PropTypes.shape({
-    styleObj: PropTypes.shape({}),
-    classname: PropTypes.string,
-  }),
-  onClick: PropTypes.func,
   children: PropTypes.node,
-  disabled: PropTypes.bool,
+  data: PropTypes.shape({
+    text: PropTypes.string,
+  }),
+  config: PropTypes.shape({
+    layout: PropTypes.shape({
+      id: PropTypes.string,
+      classname: PropTypes.string,
+      styleObj: PropTypes.shape(),
+      disabled: PropTypes.bool,
+    }),
+    onClick: PropTypes.func,
+  }),
 }
 
 Button.defaultProps = {
-  config: {
-    styleObj: {},
-    classname: '',
-  },
-  onClick: undefined,
   children: undefined,
-  disabled: false,
+  data: {
+    text: "button"
+  },
+  config: {
+    layout: {
+      id: '',
+      classname: '',
+      styleObj: {},
+      disabled: false,
+    },
+    onClick: undefined,
+  }
 }
