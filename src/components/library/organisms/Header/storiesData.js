@@ -1,3 +1,4 @@
+
 /* eslint-disable import/prefer-default-export */
 export const data = {
   default: {
@@ -20,25 +21,38 @@ export const data = {
     }, 
     data: {
       background: {
-        colors: ['#fff0', '#fff0'],
+        data:{
+          colors: ['grey', 'green'],
+          image: '',
+        },
+        config:{
+          layout:{
+            angle: '45deg'
+          }
+        }
       },
       navMenu: {
-        navItems: [
-          {
-            text: 'Home',
-            link: '#',
-            isActive: true,
-          },
-          {
-            text: 'Partners',
-            link: '#partners',
-          },
-          {
-            text: 'Articles',
-            link: '#articles',
-          },
-        ],
-        activeNav: 'Home',
+        data: {
+          navItems: [
+            {
+              text: 'Home',
+              link: '#',
+              isActive: true,
+            },
+            {
+              text: 'Partners',
+              link: '#partners',
+            },
+            {
+              text: 'Articles',
+              link: '#articles',
+            },
+          ],
+          activeNav: 'Home',
+        },
+        config:{
+
+        }
       },
       socialIcons: {
         items: [],

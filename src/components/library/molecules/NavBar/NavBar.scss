@@ -5,6 +5,9 @@
 ul.navBar {
   @include flex-prop(row, center, center);
   @include box(100%);
+  li.active{
+    font-weight: bold;
+  }
   li>a{
     padding: 5px 10px;
   }

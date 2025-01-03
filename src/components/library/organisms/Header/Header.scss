@@ -1,7 +1,7 @@
 @import 'src/components/library/styles/_mixins.scss';
 
 .header{
-  padding: 0px 20px;
+  padding: 5px 20px;
   @include flex-prop(column, center, center);
   @include tablet {
     @include flex-prop(row, center, center);

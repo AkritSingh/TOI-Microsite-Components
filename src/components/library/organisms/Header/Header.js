@@ -1,7 +1,11 @@
+/* eslint-disable camelcase */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Link from '../../atoms/Link/Link';
 import Image from '../../atoms/Image/Image';
+import Background from '../../atoms/Background/Background';
 import NavBar from '../../molecules/NavBar/NavBar';
+
 import s from './Header.scss';
 import PropTypes from 'prop-types';
 import useStyles from 'isomorphic-style-loader-react18/useStyles';
@@ -12,19 +16,20 @@ export default function Header({
 }) {
   useStyles(s);
   const { layout } = config;
-  const { id,classname, styleObj, components} = layout;
+  const { id, class: classname, styleObj, components} = layout;
   const {background, navMenu, back_to_button, logo} = data;
 
 
   const backToToiProps = {
     data: {
-      url: 'https://timesofindia.indiatimes.com',
+      url: back_to_button?.link || 'https://timesofindia.indiatimes.com',
       nofollow: '',
+      
     },
     config: {
       layout: {
-        id: 'back_to_toi',
-        classname: s.backToTOI
+        id: `back_to_${back_to_button?.channel || 'TOI'}`,
+        classname: `${s.backToTOI} ${components?.back_to_button?.class}`
       }
     }
   };
@@ -32,7 +37,7 @@ export default function Header({
   const logoProps = {
     link: {
       data: {
-        url: 'https://timesofindia.indiatimes.com/',
+        url:  logo?.link || 'https://timesofindia.indiatimes.com/',
         nofollow: '',
       },
       config: {
@@ -44,24 +49,25 @@ export default function Header({
     },
     img: {
       data: {
-        src: 'https://static.toiimg.com/photo/103690269.cms',
-        alt: 'logo',
+        src: logo?.image || 'https://static.toiimg.com/photo/103690269.cms',
+        alt: logo?.alt ||'logo',
       },
       config: {
         layout: {
           id: 'logo',
-          classname: s.logo
+          classname: `${s.logo} ${components?.logo?.class}`
         }
       } 
     }
   }
-  return (
-    <div className={`${s.header} ${classname}`} id={id}>
+
+  const component = ( 
+  <Background {...background} className={`${s.header} ${classname}`} id={id} style={styleObj}>
       <div className={s.hleft}>
         {/* back to button */}
         <Link 
           {...backToToiProps}
-        >Back to <br/><span>TOI</span>
+        >Back to <br/><span>{back_to_button?.channel || 'TOI'}</span>
         </Link>
         
          {/* Logo */}
@@ -72,10 +78,12 @@ export default function Header({
       <div className="hright">
         {/* #todoMicrosite: search bar */}
         {/* navigation */}
-        <NavBar />
+        <NavBar {...navMenu}/>
       </div>
-    </div>
-  )
+    </Background>
+  );
+
+  return component;
 }
 
 

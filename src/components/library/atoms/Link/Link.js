@@ -11,7 +11,7 @@ export default function Link({
   // useStyles(s);
   const { layout={}, onClick=undefined } = config;
   const { id = '', styleObj = {}, classname = '' } = layout || {};
-  const { nofollow = '', target, url, text='' } = data || {};
+  const { nofollow = '', target, link, text='' } = data || {};
 
   function handleClick(event) {
     if (onClick && typeof onClick === 'function') {
@@ -21,7 +21,7 @@ export default function Link({
 
   const linkAttr = {
     id,
-    href: url,
+    href: link,
     className: `${classname}`,
     onClick: handleClick,
     rel: nofollow,
@@ -42,7 +42,7 @@ Link.propTypes = {
     text: PropTypes.string,
     nofollow: PropTypes.string,
     target: PropTypes.string,
-    url: PropTypes.string,
+    link: PropTypes.string, 
   }),
   config: PropTypes.shape({
     layout: PropTypes.shape({
@@ -58,7 +58,7 @@ Link.defaultProps = {
   children: undefined,
   data:{
       text: 'Link',
-      url: '#',
+      link: '#',
       nofollow: '',
       target: undefined,
   },
