@@ -47,7 +47,7 @@ export default function Header({
       <div className="hright">
         {/* #todoMicrosite: search bar */}
         {/* navigation */}
-        {components?.logo && (<NavBar {...navMenu}/>)}  
+        {components?.navMenu && (<NavBar {...navMenu}/>)}  
       </div>
     </Background>
   );
@@ -81,10 +81,9 @@ Header.defaultProps = {
       class: '',
       styleObj: {},
       components:{
-        background: {},
-        navMenu: {},
-        back_to_button: {},
-        logo: {},
+        navMenu: false,
+        back_to_button: false,
+        logo: false,
       }
     }
   }

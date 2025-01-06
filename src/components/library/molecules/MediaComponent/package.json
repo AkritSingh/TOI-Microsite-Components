@@ -1,0 +1,6 @@
+{
+  "name": "Media Component",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./MediaComponent.js"
+}

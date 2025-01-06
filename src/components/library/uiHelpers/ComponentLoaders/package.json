@@ -1,0 +1,6 @@
+{
+  "name": "componentloader",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ComponentLoader.js"
+}

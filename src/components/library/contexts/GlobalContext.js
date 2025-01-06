@@ -3,7 +3,6 @@ import React, { createContext, useContext } from 'react';
 
 const GlobalContext = createContext(null);
 
-
 export function useGlobalContext() {
   return useContext(GlobalContext);
 }

@@ -1,58 +1,37 @@
-import React, {useEffect, useState} from 'react';
-import s from './About.scss';
-import makeRequest from '../../utils/makeRequest';
+import React from 'react';
 import useStyles from 'isomorphic-style-loader-react18/useStyles';
+import s from './About.scss';
+import DenmarkArticle from '../../molecules/DenmarkArticle/DenmarkArticle';
+import MediaComponent from '../../molecules/MediaComponent/MediaComponent';
 
-function About() {
+function About({ data, config }) {
   useStyles(s);
-  const dataUrl = "https://toidev.indiatimes.com//microsite_v2_dyn_article_body.cms?crosshostconfig=83_1&msid=115244096&hostId=83";
+  const { layout } = config;
+  const { id, class: classname, styleObj, components } = layout;
 
-  const [textComponent, setTextComponent] = useState(null);
+  const { background, denmark, media } = data;
 
-  useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const options = {
-        headers: {
-        'Accept': 'text/html',
-        }
-      };
-      if (dataUrl) {
-        const {response}= await makeRequest.get(
-          dataUrl,
-          options,
-          null,
-          'text'
-        );
-        setTextComponent(response); 
-      }
-    } catch (err) {
-      console.error('Error fetching data:', err);
-    }
+  const DenProps = {
+    extConfig: {
+      textContent: !!components?.textContent,
+      mediaContent: !!components?.mediaContent,
+      mediaType: media?.type,
+      mediaNode: <MediaComponent {...media} />,
+    },
   };
-
-  fetchData();
-
-  }, []);
-
 
   return (
     <div className={s.about}>
       <div className="wrapper">
-        {textComponent && (
-          <div
-            dangerouslySetInnerHTML={{ __html: textComponent }}
-          />
-        )}
-        <div className={s.textContent}>
-          <div className={s.subTitle}>subTitle</div>
-          <div className={s.Description}>Description</div>
-        </div>
+        <DenmarkArticle {...DenProps} {...denmark} />
+        {/* {!!components?.mediaContent && media?.type && 
+            <div className={s.mediaContainer}>
+                
+            </div>
+        } */}
       </div>
     </div>
   );
 }
-
-
 
 export default About;

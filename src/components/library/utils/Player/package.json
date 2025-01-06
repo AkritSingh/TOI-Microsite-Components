@@ -1,0 +1,6 @@
+{
+  "name": "player",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PlayerV3.js"
+}

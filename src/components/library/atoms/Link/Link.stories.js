@@ -15,7 +15,7 @@ export const Default = {
     type: 'link',
     data:{
         text: 'Link',
-        url: '#',
+        link: '#',
         nofollow: '',
     },
     config: {

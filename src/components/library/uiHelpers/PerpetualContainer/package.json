@@ -1,0 +1,6 @@
+{
+  "name": "perpetualcontainer",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PerpetualContainer.js"
+}

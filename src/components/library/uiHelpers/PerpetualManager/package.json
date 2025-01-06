@@ -1,0 +1,6 @@
+{
+  "name": "perpetualmanager",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PerpetualManager.js"
+}

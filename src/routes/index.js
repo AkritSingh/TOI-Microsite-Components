@@ -6,13 +6,21 @@ function getRoutes(layout) {
     children: [
       // The home route is added to client.js to make sure shared components are
       // added to client.js as well and not repeated in individual each route chunk.
+      // {
+      //   path: '(.*)/articleshow/:msid.cms', // redirect to liveblog as home not available.
+      //   load: () =>
+      //     import(
+      //       /* webpackChunkName: 'articleshow_[request]' */ `./articleshow/layouts/${layout}`
+      //     ),
+      // },
       {
-        path: '(.*)/articleshow/:msid.cms', // redirect to liveblog as home not available.
+        path: '/microsite/:type/:path',
         load: () =>
           import(
-            /* webpackChunkName: 'articleshow_[request]' */ `./articleshow/layouts/${layout}`
+            /* webpackChunkName: 'microsite' */ `./microsite/layouts/index`
           ),
       },
+
       {
         path: '(.*)',
         load: () => import(/* webpackChunkName: 'not-found' */ './not-found'),

@@ -1,0 +1,6 @@
+{
+  "name": "gridmaker",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./GridMaker.js"
+}

@@ -6,16 +6,9 @@ export const data = {
     config: {
       layout: {
         components: {
-          back_to_button: {
-            isVisible: true,
-            class: 'light-pink-bg ',
-          },
-          logo: {
-            isVisible: true,
-          },
-          navMenu: {
-            isVisible: false,
-          },
+          back_to_button: true,
+          logo: true,
+          navMenu: true,
         },
       },
     }, 

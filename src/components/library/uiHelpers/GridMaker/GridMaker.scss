@@ -1,0 +1,22 @@
+@import '../../scss/helpers/_variables.scss';
+@import '../../scss/helpers/_mixins.scss';
+
+.grid {
+  width: 100%;
+  &.grid-l-0 {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .row {
+    &:before {
+      content: '';
+      display: table;
+    }
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}

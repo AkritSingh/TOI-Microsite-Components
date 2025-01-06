@@ -57,7 +57,7 @@ Text.propTypes = {
 Text.defaultProps = {
   children: undefined,
   data:{
-      text: 'Link',
+      text: '',
   },
   config: {
     layout:{

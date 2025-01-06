@@ -1,0 +1,6 @@
+{
+  "name": "componentlistrenderer",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ComponentListRenderer.js"
+}
