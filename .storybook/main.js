@@ -6,7 +6,7 @@ const isSCSSRule = (rule) =>
   rule?.test?.toString() === '/\\.(scss|css)$/';
 
 module.exports = {
-  stories: ['../src/**/*.stories.js'],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'], // Supports multiple file types for stories
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -14,38 +14,62 @@ module.exports = {
   ],
 
   webpackFinal: async (config) => {
-    // Removes the existing CSS rule.
-    // eslint-disable-next-line no-param-reassign
-    config.module.rules = config.module.rules.filter(
-      (rule) => !isCSSRule(rule),
-    );
+    // Remove the existing CSS rule
+    config.module.rules = config.module.rules.filter((rule) => !isCSSRule(rule));
 
-    // Tells Storybook to use the same CSS rule config as our app.
-    // eslint-disable-next-line no-param-reassign
-    config.module.rules.push(baseWebpackConfig.module.rules.find(isSCSSRule));
+    // Add the SCSS rule from the base Webpack configuration
+    const scssRule = baseWebpackConfig.module.rules.find(isSCSSRule);
+    if (scssRule) {
+      config.module.rules.push(scssRule);
+    } else {
+      console.warn('SCSS rule not found in base Webpack config. Ensure it is defined correctly.');
+    }
 
+    // Merge resolve.alias and resolve.modules from base Webpack config
     config.resolve.alias = {
       ...config.resolve.alias,
       ...baseWebpackConfig.resolve.alias,
     };
+
     config.resolve.modules = [
-      ...config.resolve.modules,
-      ...baseWebpackConfig.resolve.modules,
+      ...(config.resolve.modules || []), // Ensure Storybook's resolve.modules is not undefined
+      ...(baseWebpackConfig.resolve.modules || []), // Ensure baseWebpackConfig.resolve.modules is not undefined
     ];
-    console.log("configconfig", config.plugins[2].definitions);
-    console.log("baseWebpackConfig",  baseWebpackConfig.plugins[0].definitions);
 
-    config.plugins[2].definitions= { ...config.plugins[2].definitions  , ...baseWebpackConfig.plugins[0].definitions}
-    console.log("configconfig", config.plugins[2].definitions);
+    // Merge DefinePlugin definitions
+    const storybookDefinePlugin = config.plugins.find(
+      (plugin) => plugin.constructor.name === 'DefinePlugin',
+    );
+    const baseDefinePlugin = baseWebpackConfig.plugins.find(
+      (plugin) => plugin.constructor.name === 'DefinePlugin',
+    );
 
-    // Return the altered config
+    if (storybookDefinePlugin && baseDefinePlugin) {
+      storybookDefinePlugin.definitions = {
+        ...storybookDefinePlugin.definitions,
+        ...baseDefinePlugin.definitions,
+      };
+    } else {
+      console.warn(
+        'DefinePlugin not found in one or both configurations. Ensure both Storybook and base Webpack configurations include it.',
+      );
+    }
+
+    console.log('Updated Storybook DefinePlugin definitions:', storybookDefinePlugin?.definitions);
+
+    // Return the updated Webpack config
     return config;
   },
 
   framework: {
     name: '@storybook/react-webpack5',
-    options: { builder: { useSWC: true } },
+    options: {
+      builder: {
+        useSWC: true, // Use SWC for faster builds
+      },
+    },
   },
+
   docs: {
     autodocs: true,
   },

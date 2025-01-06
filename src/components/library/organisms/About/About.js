@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
+import useStyles from 'isomorphic-style-loader-react18/useStyles';
 import s from './About.scss';
 import makeRequest from '../../utils/makeRequest';
-import useStyles from 'isomorphic-style-loader-react18/useStyles';
 
 function About() {
   useStyles(s);

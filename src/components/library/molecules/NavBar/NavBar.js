@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import propTypes from 'prop-types'
+import useStyles from 'isomorphic-style-loader-react18/useStyles';
 import Link from '../../atoms/Link/Link'
 import s from './NavBar.scss'
-import useStyles from 'isomorphic-style-loader-react18/useStyles';
 
 export default function NavBar(props) {
   useStyles(s);

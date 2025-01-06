@@ -1,10 +1,9 @@
 import React from 'react';
+import useStyles from 'isomorphic-style-loader-react18/useStyles';
 import Button from '../../atoms/Button/Button';
 import Link from '../../atoms/Link/Link';
 import NavBar from '../../molecules/NavBar/NavBar';
 import s from './Header.scss';
-import useStyles from 'isomorphic-style-loader-react18/useStyles';
-
 
 export default function Header() {
   useStyles(s);
@@ -13,16 +12,18 @@ export default function Header() {
       <Button>test</Button>
       <Link>test</Link>
       <div>
-        <div className={s.topSectionWrapper}
-        >
+        <div className={s.topSectionWrapper}>
           <div className="hleft">
             {/* back to button */}
             <a
               className="back-to"
               target="_blank"
               href="https://timesofindia.indiatimes.com"
-            ><p>Back to <span>TOI</span></p></a
             >
+              <p>
+                Back to <span>TOI</span>
+              </p>
+            </a>
 
             {/* Logo */}
             <div className="logo-container">
@@ -30,12 +31,16 @@ export default function Header() {
                 <a
                   href="https://timesofindia.indiatimes.com/"
                   data-href="https://timesofindia.indiatimes.com/"
-                ><img
+                >
+                  <img
                     src="https://static.toiimg.com/photo/103690269.cms"
                     alt="logo"
-                  /></a>
+                  />
+                </a>
               </div>
-              <div className=" "><span></span></div>
+              <div className=" ">
+                <span></span>
+              </div>
             </div>
           </div>
           <div className="hright">
@@ -46,5 +51,5 @@ export default function Header() {
         </div>
       </div>
     </>
-  )
+  );
 }

@@ -768,7 +768,7 @@ $xxldesktop-width: 1420px;
       animation: gogoloader 2s infinite 1s;
     }
 
-    @if $class='red' {
+    @if $class="red" {
       &.red {
         position: absolute;
         right: $right;
